@@ -1,8 +1,3 @@
-##This script will allow png, jpegs and pdf files to be uploaded into a local machine folder.
-##secure filename is for security 
-##TODO:- Integrating this with mongodb databases and uploading into those databases instead of local machine
-##-Integrating corresponding html pages where the user can perform these transactions
-
 import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
@@ -37,15 +32,8 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return redirect(url_for('upload_file',
                                     filename=filename))
-    return '''
-    <!doctype html>
-    <title>Upload new File</title>
-    <h1>Upload new File</h1>
-    <form method=post enctype=multipart/form-data>
-      <input type=file name=file>
-      <input type=submit value=Upload>
-    </form>
-    '''
+       #'upload_file' redirects webpage back to upload_file html after upload is successfully compelted
+    return 0
 
 if __name__ == "__main__":
-    app.run(host = 'localhost', port = 8105, debug=True)
+    app.run(host = 'localhost', port = 8101, debug=True)
