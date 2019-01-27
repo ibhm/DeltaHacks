@@ -1,3 +1,8 @@
+##This script will allow png, jpegs and pdf files to be uploaded into a local machine folder.
+##secure filename is for security 
+##TODO:- Integrating this with mongodb databases and uploading into those databases instead of local machine
+##-Integrating corresponding html pages where the user can perform these transactions
+
 import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
@@ -22,8 +27,7 @@ def upload_file():
             flash('No file part')
             return redirect(request.url)
         file = request.files['file']
-        # if user does not select file, browser also
-        # submit an empty part without filename
+        # if no file seelcted, produce following result
         if file.filename == '':
             flash('No selected file')
             return redirect(request.url)
